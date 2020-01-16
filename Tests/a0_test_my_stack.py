@@ -28,7 +28,8 @@ class MyTestCase(unittest.TestCase):
 		for _ in items:
 			received_items.append(my_stack.pop())
 
-		self.assertEqual(reversed(items), received_items)
+		# Добавила преобразование в list() первого аргумента, иначе типы сравниваемых объектов не совпадали
+		self.assertEqual(list(reversed(items)), received_items)
 
 	def test_peek(self):
 		my_stack.push(3)
