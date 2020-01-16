@@ -5,6 +5,7 @@ Queue priorities are from 0 to 5
 """
 from typing import Any
 
+queue = []
 
 def enqueue(elem: Any, priority: int = 0) -> None:
 	"""
@@ -13,6 +14,9 @@ def enqueue(elem: Any, priority: int = 0) -> None:
 	:param elem: element to be added
 	:return: Nothing
 	"""
+	global queue
+	queue.append((priority, elem))
+	queue.sort()
 	return None
 
 
@@ -22,7 +26,12 @@ def dequeue() -> Any:
 
 	:return: dequeued element
 	"""
-	return None
+	global queue
+	if queue:
+		elem = queue.pop(0)
+		return elem[1]
+	else:
+		return None
 
 
 def peek(ind: int = 0, priority: int = 0) -> Any:
@@ -32,7 +41,9 @@ def peek(ind: int = 0, priority: int = 0) -> Any:
 	:param ind: index of element (count from the beginning)
 	:return: peeked element
 	"""
-	return None
+	global queue
+	elem = queue[ind]
+	return elem[1]
 
 
 def clear() -> None:
@@ -41,4 +52,9 @@ def clear() -> None:
 
 	:return: None
 	"""
+	global queue
+	while queue:
+		queue.pop()
+	#	dequeue()
+	#queue[:] = []
 	return None
