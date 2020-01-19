@@ -11,8 +11,13 @@ def ex(x: Union[int, float]) -> float:
 	:param x: x value
 	:return: e^x value
 	"""
-	print(x)
-	return 0
+	result = 0.0
+	factorial = 1
+
+	for n in range(10):
+		result += (x ** n) / factorial
+		factorial *= n + 1
+	return result
 
 
 def sinx(x: Union[int, float]) -> float:
@@ -22,5 +27,11 @@ def sinx(x: Union[int, float]) -> float:
 	:param x: x value
 	:return: sin(x) value
 	"""
-	print(x)
-	return 0
+	result = 0.0
+	factorial = 1
+
+	for n in range(5):
+		result += (-1) ** n * (x ** (2*n + 1)) / factorial
+		factorial *= (2 * n + 2) * (2 * n + 3)
+	return result
+
