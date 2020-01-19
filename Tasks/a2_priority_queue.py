@@ -16,7 +16,7 @@ def enqueue(elem: Any, priority: int = 0) -> None:
 	"""
 	global queue
 	queue.append((priority, elem))
-	queue.sort()
+	queue.sort(key=lambda x:x[0])
 	return None
 
 
